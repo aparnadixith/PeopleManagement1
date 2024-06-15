@@ -1,0 +1,29 @@
+﻿@model PeopleViewModel
+
+<form asp-action="Index" method="get">
+    <input type="text" name="searchString" value="@Model.SearchString" />
+    <button type="submit">Search</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model.People)
+        {
+            Html.RenderPartial.("_PersonPartial", Person)
+           // <tr>
+             //   <td>@person.Name</td>
+               // <td>@person.City</td>
+               // <td>
+                    <a asp-action="Details" asp-route-id="@person.Id">Details</a>
+                //</td>
+            //</tr>
+        }
+    </tbody>
+</table>
